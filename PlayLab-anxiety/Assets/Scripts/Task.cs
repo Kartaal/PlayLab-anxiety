@@ -21,4 +21,10 @@ public class Task : MonoBehaviour
             taskText.fontStyle = FontStyles.Normal;
         }
     }
+
+    public void UncheckTask()
+    {
+        taskToggle.isOn = false;
+        ToggleStrikeThrough();
+    }
 }

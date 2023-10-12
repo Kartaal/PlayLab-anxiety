@@ -58,7 +58,7 @@ public class TaskManager : MonoBehaviour
     {
         foreach (var task in tasks)
         {
-            task.toggleTaskCheck();
+            task.ToggleTaskCheck();
         }
     }
 

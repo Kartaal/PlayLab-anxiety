@@ -1,3 +1,5 @@
+using System;
+using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
@@ -28,7 +30,7 @@ public class Task : MonoBehaviour
         ToggleStrikeThrough();
     }
 
-    public void toggleTaskCheck()
+    public void ToggleTaskCheck()
     {
         taskToggle.isOn = !taskToggle.isOn;
         ToggleStrikeThrough();

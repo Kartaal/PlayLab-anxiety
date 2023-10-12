@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEditor;
 using UnityEngine;
 using UnityEngine.UI;
+using Random = UnityEngine.Random;
 
 public class TaskManager : MonoBehaviour
 {
@@ -34,9 +35,16 @@ public class TaskManager : MonoBehaviour
         {
             var checkedTasks = FindCheckedTasks();
 
-            foreach (var checkedTask in checkedTasks)
+            // Ensure number to uncheck doesn't exceed total checked count
+            var maxUncheck = Math.Min(checkedTasks.Count, Random.Range(1, 3));
+            Debug.Log($"Unchecking {maxUncheck}...");
+
+            for (int i = 0; i < maxUncheck; i++)
             {
-                checkedTask.UncheckTask();
+                int indexToUncheck = (int) (checkedTasks.Count * Random.value);
+                var task = checkedTasks[indexToUncheck];
+                task.UncheckTask();
+                checkedTasks.Remove(task);
             }
         }
     }
@@ -44,6 +52,14 @@ public class TaskManager : MonoBehaviour
     public void TriggerOnApplicationPause()
     {
         OnApplicationPause(true);
+    }
+
+    public void ToggleAllTasks()
+    {
+        foreach (var task in tasks)
+        {
+            task.toggleTaskCheck();
+        }
     }
 
     private static bool FindChecked(Task task)

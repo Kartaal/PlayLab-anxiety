@@ -27,4 +27,10 @@ public class Task : MonoBehaviour
         taskToggle.isOn = false;
         ToggleStrikeThrough();
     }
+
+    public void toggleTaskCheck()
+    {
+        taskToggle.isOn = !taskToggle.isOn;
+        ToggleStrikeThrough();
+    }
 }
